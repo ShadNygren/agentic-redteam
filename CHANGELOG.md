@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   actor for emulation. Smoke test now expects 7 redteam reference files.
 
 ### Changed
+- `redteam` planning reference (`05`) — align objectives to the client's **BIA-ranked business functions / crown
+  jewels** (the same ranking their DR/RTO/RPO uses) so findings land with leadership; and note **AI/LLM systems**
+  (Copilot/chatbots/LLM apps — shadow AI, prompt injection, model data exfil) as a modern in-scope attack surface.
 - `redteam` OPSEC/detection-testing reference (`02`) expanded (from IR-practitioner podcasts): measure the blue
   team's **response** (MTTD/MTTR) and IR maturity, not just detection; and — within RoE/deconfliction —
   deliberately surface a benign, non-destructive marker to test whether/how fast the SOC responds when you've sat

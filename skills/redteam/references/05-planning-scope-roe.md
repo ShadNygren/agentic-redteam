@@ -16,6 +16,14 @@ logging discipline that makes the whole thing accountable. **Read this with `ref
   what's explicitly off-limits). Get it in writing.
 - **Engagement depth** flows from the objectives: a **full simulation** (long, stealthy, whole-org adversary
   emulation) vs an **extended pentest / standard red-team op**. Depth picks the methodology.
+- **Aim at the crown jewels the *business* ranks highest.** Tie objectives to the client's **highest-value
+  business functions / data** — the same ranking their BIA (business impact analysis) and DR/RTO/RPO planning use
+  (tax/health/payments data over a low-value HR share). Reaching what the business cares most about makes the
+  findings land with leadership and maps cleanly to their risk model. If the client hasn't ranked, that gap is
+  itself worth surfacing.
+- **Modern attack surface includes AI/LLM systems.** Increasingly in scope: AI assistants/Copilot, chatbots, and
+  LLM-backed apps — shadow AI, prompt injection, sensitive-data exposure/exfil via the model, over-broad plugin/
+  tool access. Scope them explicitly (with RoE) when the org has deployed them.
 
 **Example client objectives (and what each implies):**
 - *Identify system misconfigurations & network weaknesses* (often scoped to external/public-facing) → map + test the perimeter.
