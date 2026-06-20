@@ -5,6 +5,22 @@ run as a **test case** — "does the blue team see this?" — and is **documente
 This is detection-testing for a defensive purpose, the standard practice of every legitimate red-team firm. This
 reference is about *what to measure and how to frame it*, not a catalog of evasion recipes.
 
+## Know the defender's playbook: MITRE D3FEND
+**D3FEND** is MITRE's defensive counterpart to ATT&CK — a knowledge base of the **countermeasures** the blue team
+deploys (tactics: Model, Harden, Detect, Isolate, Deceive, Evict, Restore). A red team should understand it for
+two reasons:
+- **Anticipate + evade the controls.** Knowing the likely D3FEND countermeasures for the TTPs you'll run lets you
+  predict where you'll be detected/blocked and plan accordingly (and watch for **Deceive** — honeytokens/decoys
+  are placed precisely to catch you; touching one is a giveaway).
+- **The digital-artifact lens *is* the OPSEC model.** D3FEND links offense to defense through **digital
+  artifacts** — every technique you run **produces artifacts** (a process spawn, a network connection, a modified
+  code segment, a registry key) that defensive techniques **observe**. So "evasion" is really **minimizing or
+  altering the artifacts you generate** for a given objective. Each artifact you produce is a detection
+  opportunity you're testing — map your planned actions to the artifacts they create, and you've predicted the
+  detection surface. (Pair with the detection-gap matrix in `ref 03`.)
+- **Shared vocabulary** — reporting findings in D3FEND terms ("you lacked `Process Spawn Analysis`,"
+  "`Network Traffic Analysis` caught the C2") lets red and blue speak precisely about coverage and gaps.
+
 ## Reframe: ATT&CK "Defense Evasion" as test cases
 The MITRE ATT&CK **Defense Evasion (TA0005)** tactic is, for a red team, a checklist of **detection test cases**.
 For each technique the actor would use, ask the operational question and record the answer:

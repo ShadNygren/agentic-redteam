@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   actor for emulation. Smoke test now expects 7 redteam reference files.
 
 ### Changed
+- **MITRE D3FEND awareness added.** `redteam` OPSEC reference (`02`): know the defender's playbook (D3FEND
+  countermeasures) to anticipate/evade controls, watch for Deceive (honeytokens), use the **digital-artifact
+  lens** as the OPSEC model (every technique produces artifacts defenses observe → "evasion" = minimizing the
+  artifacts you generate), and report findings in shared D3FEND vocabulary. `pentest` exploitation reference
+  (`04`): account for memory-protection hardening (ASLR/DEP/stack-canaries/CFG = D3FEND Application Hardening)
+  when assessing exploitability.
 - `redteam` planning reference (`05`) — align objectives to the client's **BIA-ranked business functions / crown
   jewels** (the same ranking their DR/RTO/RPO uses) so findings land with leadership; and note **AI/LLM systems**
   (Copilot/chatbots/LLM apps — shadow AI, prompt injection, model data exfil) as a modern in-scope attack surface.
