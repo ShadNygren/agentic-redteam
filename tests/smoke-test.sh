@@ -26,20 +26,28 @@ command -v nuclei   >/dev/null 2>&1 && echo "  ok   nuclei present"   || echo " 
 command -v gobuster >/dev/null 2>&1 && echo "  ok   gobuster present" || echo "  warn gobuster absent (top10 toolset?)"
 command -v sqlmap   >/dev/null 2>&1 && echo "  ok   sqlmap present"   || echo "  warn sqlmap absent (top10 toolset?)"
 
-echo "[skill + scope guard]"
+echo "[skills + reference libraries]"
 check "pentest skill present" test -f /root/.claude/skills/pentest/SKILL.md
-# the reference library (progressive-disclosure how-to) must be bundled too
-REFDIR=/root/.claude/skills/pentest/references
-check "reference library present" test -f "$REFDIR/00-methodology-and-engagement.md"
-check "reference library complete (6 files)" test "$(ls -1 "$REFDIR"/*.md 2>/dev/null | wc -l)" -ge 6
-SG=/root/.claude/skills/pentest/scripts/scope_check.sh
-check "scope_check.sh present" test -x "$SG"
-# scope guard must REFUSE when no scope file exists (exit != 0)
-if "$SG" 192.0.2.1 /nonexistent/SCOPE.txt >/dev/null 2>&1; then
-  echo "  FAIL scope guard allowed a target with no scope file"; fail=$((fail+1))
-else
-  echo "  ok   scope guard refuses with no scope file"; pass=$((pass+1))
-fi
+check "redteam skill present" test -f /root/.claude/skills/redteam/SKILL.md
+# the reference libraries (progressive-disclosure how-to) must be bundled too
+PT_REF=/root/.claude/skills/pentest/references
+RT_REF=/root/.claude/skills/redteam/references
+check "pentest reference library present" test -f "$PT_REF/00-methodology-and-engagement.md"
+check "pentest reference library complete (6 files)" test "$(ls -1 "$PT_REF"/*.md 2>/dev/null | wc -l)" -ge 6
+check "redteam reference library present" test -f "$RT_REF/00-adversary-emulation-and-methodology.md"
+check "redteam reference library complete (5 files)" test "$(ls -1 "$RT_REF"/*.md 2>/dev/null | wc -l)" -ge 5
+
+echo "[scope guard]"
+# both skills carry the scope guard; it must REFUSE when no scope file exists (exit != 0)
+for SG in /root/.claude/skills/pentest/scripts/scope_check.sh /root/.claude/skills/redteam/scripts/scope_check.sh; do
+  skill=$(echo "$SG" | sed 's#.*/skills/\([^/]*\)/.*#\1#')
+  check "$skill scope_check.sh present" test -x "$SG"
+  if "$SG" 192.0.2.1 /nonexistent/SCOPE.txt >/dev/null 2>&1; then
+    echo "  FAIL $skill scope guard allowed a target with no scope file"; fail=$((fail+1))
+  else
+    echo "  ok   $skill scope guard refuses with no scope file"; pass=$((pass+1))
+  fi
+done
 
 echo "== $pass passed, $fail failed =="
 [ "$fail" -eq 0 ]

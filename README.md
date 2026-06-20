@@ -10,12 +10,17 @@
 ---
 
 ## What this is
-A Docker image that packages **Kali Linux + Claude Code + a penetration-testing Claude Code Skill** into a
-single, runnable, AI-augmented red-team toolkit. Claude Code orchestrates the Kali toolset by following a
-recognized methodology — **PTES / NIST SP 800-115 / OWASP / MITRE ATT&CK** — wrapped in a **deterministic
-harness with human-in-the-loop control** so every finding is **tool-evidenced and reproducible, not
-hallucinated** (the documented failure mode of AI pentesters), and written up as an **auditor-acceptable
-report**.
+A Docker image that packages **Kali Linux + Claude Code + two Claude Code skills** into a single, runnable,
+AI-augmented offensive-security toolkit. Claude Code orchestrates the Kali toolset by following recognized
+methodologies — **PTES / NIST SP 800-115 / OWASP WSTG / MITRE ATT&CK** — wrapped in a **deterministic harness
+with human-in-the-loop control** so every finding is **tool-evidenced and reproducible, not hallucinated** (the
+documented failure mode of AI pentesters), and written up as an **auditor-acceptable report**.
+
+The two skills are distinct disciplines (use the right one):
+- **`pentest`** — broad, comprehensive **vulnerability assessment**: find and verify as many issues as possible
+  across a scope, with a prioritized remediation report.
+- **`redteam`** — objective-driven **adversary emulation**: emulate a real threat actor (MITRE ATT&CK TTPs) to
+  test the organization's **detection & response**, delivering an attack narrative + detection-gap analysis.
 
 Because it ships as a **Docker image you run where the test needs to happen**, it covers **both**:
 - **External** assessments (run it anywhere with reach to the target), and
@@ -58,20 +63,30 @@ docker build --build-arg KALI_TAG=kali-rolling --build-arg TOOLSET=kali-tools-to
 - **Tool-evidenced findings only** — no fabricated output, every finding reproducible.
 - **Egress-controlled**; for regulated data you can swap Claude for a **local model** so nothing leaves.
 
-## The `pentest` skill
-The bundled Claude Code skill ([`skills/pentest/SKILL.md`](skills/pentest/SKILL.md)) gives the agent the depth
-of an experienced offensive-security professional, using **progressive disclosure**: a focused entry point with
-the hard rules + phase workflow, backed by a [`references/`](skills/pentest/references) library it reads as each
-phase demands —
+## The skills
+Both skills give the agent the depth of an experienced operator via **progressive disclosure**: a focused
+`SKILL.md` entry point (hard rules + phase workflow) backed by a `references/` library it reads as each phase
+demands. They share tooling and the same guardrails; the difference is goal and posture.
+
+**[`pentest`](skills/pentest/SKILL.md)** — comprehensive assessment. References:
 [methodology & engagement](skills/pentest/references/00-methodology-and-engagement.md),
 [recon & enumeration](skills/pentest/references/01-recon-and-enumeration.md),
 [web-app testing](skills/pentest/references/02-web-application-testing.md),
 [Active Directory / internal](skills/pentest/references/03-active-directory-and-internal.md),
-[exploitation & post-exploitation](skills/pentest/references/04-exploitation-and-post-exploitation.md), and
-[reporting](skills/pentest/references/05-reporting.md). Grounded in PTES, NIST SP 800-115, OWASP WSTG, MITRE
-ATT&CK, and an OSCP/PEN-200 mindset.
+[exploitation & post-exploitation](skills/pentest/references/04-exploitation-and-post-exploitation.md),
+[reporting](skills/pentest/references/05-reporting.md). Mindset: PTES / NIST SP 800-115 / OWASP WSTG / OSCP.
 
-See [`SECURITY.md`](SECURITY.md) and the skill at [`skills/pentest/SKILL.md`](skills/pentest/SKILL.md).
+**[`redteam`](skills/redteam/SKILL.md)** — objective-driven adversary emulation + detection testing. Reuses the
+pentest references for execution, and adds:
+[adversary emulation & methodology](skills/redteam/references/00-adversary-emulation-and-methodology.md) (kill
+chains, ATT&CK, cadence),
+[initial access & C2](skills/redteam/references/01-initial-access-and-c2.md),
+[OPSEC & detection testing](skills/redteam/references/02-opsec-and-detection-testing.md),
+[purple team & reporting](skills/redteam/references/03-purple-team-and-reporting.md),
+[ATT&CK Navigator](skills/redteam/references/04-attack-navigator.md). All evasion is framed as **detection
+testing** — exercised within RoE and documented for the blue team, never covert intrusion.
+
+See [`SECURITY.md`](SECURITY.md) and the skills under [`skills/`](skills).
 
 ## Trademarks
 **Agentic Redteam™** is a trademark of Shad Nygren / Virtual Hipster Corporation.

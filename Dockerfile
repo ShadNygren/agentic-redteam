@@ -44,14 +44,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 RUN npm install -g @anthropic-ai/claude-code \
  && npm cache clean --force
 
-# 4) The value-add: the pentest Claude Code skill, the methodology docs, and tests.
-#    The skill is placed where Claude Code auto-discovers it (~/.claude/skills/).
+# 4) The value-add: the Claude Code skills (pentest + redteam), the methodology docs, and tests.
+#    Skills are placed where Claude Code auto-discovers them (~/.claude/skills/).
 COPY skills/ /root/.claude/skills/
 RUN mkdir -p ${AGENTIC_REDTEAM_HOME}
 COPY docs/   ${AGENTIC_REDTEAM_HOME}/docs/
 COPY tests/  ${AGENTIC_REDTEAM_HOME}/tests/
 COPY README.md SECURITY.md NOTICE LICENSE ${AGENTIC_REDTEAM_HOME}/
-RUN chmod +x ${AGENTIC_REDTEAM_HOME}/tests/*.sh /root/.claude/skills/pentest/scripts/*.sh 2>/dev/null || true
+RUN chmod +x ${AGENTIC_REDTEAM_HOME}/tests/*.sh /root/.claude/skills/*/scripts/*.sh 2>/dev/null || true
 
 # 5) Engagement workspace — mount a volume here: authorization/scope files IN, report OUT.
 WORKDIR /work
