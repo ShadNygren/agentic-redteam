@@ -58,6 +58,19 @@ docker build --build-arg KALI_TAG=kali-rolling --build-arg TOOLSET=kali-tools-to
 - **Tool-evidenced findings only** — no fabricated output, every finding reproducible.
 - **Egress-controlled**; for regulated data you can swap Claude for a **local model** so nothing leaves.
 
+## The `pentest` skill
+The bundled Claude Code skill ([`skills/pentest/SKILL.md`](skills/pentest/SKILL.md)) gives the agent the depth
+of an experienced offensive-security professional, using **progressive disclosure**: a focused entry point with
+the hard rules + phase workflow, backed by a [`references/`](skills/pentest/references) library it reads as each
+phase demands —
+[methodology & engagement](skills/pentest/references/00-methodology-and-engagement.md),
+[recon & enumeration](skills/pentest/references/01-recon-and-enumeration.md),
+[web-app testing](skills/pentest/references/02-web-application-testing.md),
+[Active Directory / internal](skills/pentest/references/03-active-directory-and-internal.md),
+[exploitation & post-exploitation](skills/pentest/references/04-exploitation-and-post-exploitation.md), and
+[reporting](skills/pentest/references/05-reporting.md). Grounded in PTES, NIST SP 800-115, OWASP WSTG, MITRE
+ATT&CK, and an OSCP/PEN-200 mindset.
+
 See [`SECURITY.md`](SECURITY.md) and the skill at [`skills/pentest/SKILL.md`](skills/pentest/SKILL.md).
 
 ## Trademarks

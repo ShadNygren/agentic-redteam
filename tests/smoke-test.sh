@@ -28,6 +28,10 @@ command -v sqlmap   >/dev/null 2>&1 && echo "  ok   sqlmap present"   || echo " 
 
 echo "[skill + scope guard]"
 check "pentest skill present" test -f /root/.claude/skills/pentest/SKILL.md
+# the reference library (progressive-disclosure how-to) must be bundled too
+REFDIR=/root/.claude/skills/pentest/references
+check "reference library present" test -f "$REFDIR/00-methodology-and-engagement.md"
+check "reference library complete (6 files)" test "$(ls -1 "$REFDIR"/*.md 2>/dev/null | wc -l)" -ge 6
 SG=/root/.claude/skills/pentest/scripts/scope_check.sh
 check "scope_check.sh present" test -x "$SG"
 # scope guard must REFUSE when no scope file exists (exit != 0)
