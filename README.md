@@ -85,8 +85,9 @@ chains, ATT&CK, cadence),
 [purple team & reporting](skills/redteam/references/03-purple-team-and-reporting.md),
 [ATT&CK Navigator](skills/redteam/references/04-attack-navigator.md),
 [planning, scope & RoE](skills/redteam/references/05-planning-scope-roe.md),
-[threat intel & APTs](skills/redteam/references/06-threat-intel-and-apts.md). All evasion is framed as **detection
-testing** — exercised within RoE and documented for the blue team, never covert intrusion.
+[threat intel & APTs](skills/redteam/references/06-threat-intel-and-apts.md),
+[adversary-emulation plan](skills/redteam/references/07-adversary-emulation-plan.md). All evasion is framed as
+**detection testing** — exercised within RoE and documented for the blue team, never covert intrusion.
 
 See [`SECURITY.md`](SECURITY.md) and the skills under [`skills/`](skills).
 

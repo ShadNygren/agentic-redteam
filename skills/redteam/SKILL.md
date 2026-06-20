@@ -57,6 +57,9 @@ and technology — and the deliverable is an **attack narrative + detection-gap 
   document anatomy, the four planning documents, the timestamped operator log, and planning/execution checklists.
 - `references/06-threat-intel-and-apts.md` — understand APTs (vs traditional actors), their categories and
   vendor naming conventions, attribution, and how to pick + model a real actor for emulation.
+- `references/07-adversary-emulation-plan.md` — emulation vs simulation, the emulation lifecycle, and the
+  end-to-end plan workflow: select actor → gather CTI → map TTPs → reconstruct the kill-chain sequence → convert
+  to an executable plan (manual or automated).
 
 ## Shared execution references (reuse the pentest library — same tools, same guardrails)
 For the hands-on technical phases, read the pentest skill's library (installed alongside this skill):
@@ -68,10 +71,12 @@ The difference is **how** you use them here: minimal footprint, objective-focuse
 blue team sees.
 
 ## How to run a red-team engagement
-1. **Planning & threat model** (`ref 00` + `ref 05` + `ref 06` + `ref 04`) — read AUTHORIZATION + SCOPE;
-   extrapolate scope from the client's objectives, define the **objective(s)** (the "flag"), pick the **threat
-   actor to emulate** (by geography + industry, using threat intel) and map its TTPs in the ATT&CK Navigator,
-   agree the full RoE + deconfliction, confirm witting/unwitting staff, and stand up the operator log. Get a "go."
+1. **Planning, threat model & emulation plan** (`ref 00` + `ref 05` + `ref 06` + `ref 07` + `ref 04`) — read
+   AUTHORIZATION + SCOPE; extrapolate scope from the client's objectives, define the **objective(s)** (the
+   "flag"), pick the **threat actor to emulate** (by geography + industry + **CTI availability**), gather CTI,
+   **map its TTPs in the ATT&CK Navigator and reconstruct the kill-chain sequence** into an executable emulation
+   plan (emulation vs simulation per `ref 07`), agree the full RoE + deconfliction, confirm witting/unwitting
+   staff, and stand up the operator log. Get a "go."
 2. **Recon / target development** (`../pentest/ref 01`) — OSINT on people + tech; build pretexts and a target map.
 3. **Initial access** (`ref 01`) — emulate the actor's entry (phishing/payload/exposed service) **on approval**;
    log exactly what you sent and when, so the blue team can later correlate.

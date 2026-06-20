@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- **`redteam` reference `07-adversary-emulation-plan.md`** — the end-to-end emulation workflow: **emulation vs
+  simulation** (faithful 1:1 to one actor vs augmented/combined TTP set), why clients want it (tests *Defenders*
+  not just defenses — detection/response/escalation), the cyclic emulation lifecycle, and the plan steps (select
+  actor by industry+geo+**CTI availability** → gather CTI → map TTPs → **reconstruct the kill-chain sequence ATT&CK
+  omits** → convert to plan; cyclical/repeating tactics; concessions for hard/illegal-to-replicate infra; manual
+  vs automated via CALDERA/Atomic/Engenuity). Cites the **APT & CyberCriminal Campaign Collections** archive
+  (`github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections`). Smoke test now expects 8 redteam reference files.
 - **`docs/STRATEGY_OF_ADVERSARIAL_COEVOLUTION.md`** — a strategic-foundation paper (shared verbatim with the
   blue-team companion): *when both sides know the playbook, knowledge is only the floor* — victory turns on
   structural asymmetry, tempo (OODA), terrain, deception, force, discipline, and above all **adaptation velocity**

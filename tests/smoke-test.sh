@@ -35,7 +35,7 @@ RT_REF=/root/.claude/skills/redteam/references
 check "pentest reference library present" test -f "$PT_REF/00-methodology-and-engagement.md"
 check "pentest reference library complete (6 files)" test "$(ls -1 "$PT_REF"/*.md 2>/dev/null | wc -l)" -ge 6
 check "redteam reference library present" test -f "$RT_REF/00-adversary-emulation-and-methodology.md"
-check "redteam reference library complete (7 files)" test "$(ls -1 "$RT_REF"/*.md 2>/dev/null | wc -l)" -ge 7
+check "redteam reference library complete (8 files)" test "$(ls -1 "$RT_REF"/*.md 2>/dev/null | wc -l)" -ge 8
 # shared strategic-foundation doctrine
 check "strategy doctrine doc present" test -f /opt/agentic-redteam/docs/STRATEGY_OF_ADVERSARIAL_COEVOLUTION.md
 

@@ -53,7 +53,11 @@ A red team is defined by its objective(s), agreed with the client:
 - Emulate a **specific, relevant threat actor** (or a representative profile) using public threat intel and
   **MITRE ATT&CK** — replicate their known **TTPs** (tactics → techniques → procedures), not random tradecraft.
   This makes the test realistic and the findings actionable for the SOC. **Choosing and modeling the actor:**
-  see `ref 06` (APTs, categories, naming, attribution).
+  see `ref 06` (APTs, categories, naming, attribution). **Building the actual plan** — emulation vs simulation,
+  CTI gathering, kill-chain sequencing, manual vs automated execution: `ref 07`.
+- **Emulation vs simulation (one line):** *emulation* = reproduce **one** actor's TTPs as faithfully as the
+  public record allows; *simulation* = an **augmented/combined** TTP set (multiple actors' shared TTPs + fresh
+  CTI + your own). Both are valid; know which you're doing (`ref 07`).
 - Plan the campaign across the ATT&CK tactics: Reconnaissance → Resource Development → Initial Access →
   Execution → Persistence → Privilege Escalation → Defense Evasion → Credential Access → Discovery → Lateral
   Movement → Collection → Command & Control → Exfiltration → Impact. **Map every planned action to an ATT&CK

@@ -63,5 +63,9 @@ you are not performing attribution, so cite sources and avoid overclaiming.
 - **MITRE ATT&CK — Groups** (the canonical, ID-anchored actor catalog with techniques + software).
 - **APT Groups and Operations** spreadsheet (`apt.threattracking.com`) — cross-vendor names by region, ops,
   toolsets, and CTI links.
-- **APTnotes** and **APT/cybercriminal campaign collections** (community report archives by year).
+- **APTnotes** and the **APT & CyberCriminal Campaign Collections** archive
+  (`github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections` — a large year-by-year corpus of APT/crimeware
+  reports + PDFs; note the upstream "Campagin" spelling); **aptmap / APT search**; **MISP / Malpedia** for malware
+  + IOCs; vendor CTI (Mandiant, CrowdStrike, Trend Micro, etc.).
 - **Microsoft threat-actor naming taxonomy** (2023) for the weather/typhoon mapping.
+- For turning all this into an executable emulation plan, see `ref 07`.
