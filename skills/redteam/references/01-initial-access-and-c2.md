@@ -32,19 +32,45 @@ Emulate the actor's realistic entry vector — only those allowed by the RoE.
   each is a detection/prevention data point, not an obstacle to defeat silently.
 - Prefer **known, established frameworks** over bespoke tooling; emulate the *actor's* delivery technique.
 
-## Command & Control (TA0011)
-- **C2 frameworks** (use within scope/egress rules): Sliver, Mythic, PowerShell Empire, Metasploit, Havoc, and
-  commercial Cobalt Strike. They provide beaconing, tasking, and session management.
-- **OPSEC for realism + measurement** (all to test detection, all logged for deconfliction):
-  - **Beacon cadence / jitter** — realistic call-back intervals; tests whether network analytics flag periodic
-    beaconing.
-  - **Channel choice** — HTTPS/DNS/known-good cloud fronting **only as permitted by RoE egress rules**; tests
-    egress filtering and proxy inspection.
-  - **Redirectors** — separate the team server from the listener the target sees; tests network attribution.
-  - **Least footprint** — minimize hosts touched and actions taken; every extra action is another detection
-    chance, recorded either way.
-- **Persistence (TA0003)** — emulate the actor's persistence (scheduled tasks, services, run keys) **only if in
-  scope**; it tests whether the blue team detects/hunts persistence. Track every mechanism for clean removal.
+## Command & Control — setup (TA0011)
+C2 is how you task the foothold and is one of the richest detection surfaces. Set it up to **emulate the actor
+realistically and measure what the defenders see** — every choice is a test case, all logged for deconfliction.
+
+**Frameworks** (use within scope/egress rules): Sliver, Mythic, PowerShell Empire, Metasploit, Havoc, and
+commercial Cobalt Strike. They provide listeners, payload/stager generation, beaconing, tasking, and session
+management.
+
+**Architecture (set it up in this order):**
+1. **Team server** — the operator-side C2 controller, on disposable, dedicated infrastructure (cloud VM). Never
+   the box the target talks to directly. Lock it down (firewall to operator IPs, TLS).
+2. **Listener / channel** — what the implant calls back on. Pick per the **RoE egress rules**: **HTTPS** (blends
+   with web traffic, tests proxy/TLS inspection), **DNS** (tests DNS egress/analytics), or domain/CDN fronting
+   where permitted. Use a **valid TLS cert** (e.g. Let's Encrypt) and an aged/categorized domain for realism.
+3. **Redirector** — a lightweight relay (e.g. nginx/socat/HTTP) between the target and the team server, so the
+   target only ever sees the redirector. Protects/obscures the team server and **tests network attribution**;
+   burn and replace redirectors, not the team server.
+4. **Payload / implant** — generate from the framework; **stager** (small, pulls the stage from the listener)
+   vs **stageless** (self-contained). Match the *actor's* delivery (see Payload delivery above; reverse vs bind
+   and staged vs stageless are explained in `../pentest/references/04-exploitation-and-post-exploitation.md`).
+5. **Beacon back** — confirm the implant checks in, then task it.
+
+**Beacon OPSEC (realism + measurement):**
+- **Sleep + jitter** — realistic call-back interval with randomized jitter; tests whether network analytics flag
+  periodic beaconing. **Kill date** so no implant outlives the engagement window.
+- **Malleable / traffic profiles** — shape C2 traffic to look like normal/known-good services where the framework
+  supports it; tests signature/heuristic network detection.
+- **Least footprint** — minimize hosts touched and actions taken; every extra action is another detection chance,
+  recorded either way.
+
+**Internal / peer-to-peer C2 (post-foothold):** for hosts with **no direct egress**, chain them via a
+**peer-to-peer channel** (e.g. an **SMB named-pipe** beacon) through an already-controlled host that does have
+egress — tests lateral-C2 / named-pipe detection. Pivoting/routing details: `../pentest/references/04`.
+
+**Infrastructure hygiene:** dedicated, disposable infra per engagement; don't reuse domains/IPs across clients;
+tear everything down at close-out. Record all C2 domains/IPs/channels in the operator log for deconfliction.
+
+**Persistence (TA0003)** — emulate the actor's persistence (scheduled tasks, services, run keys) **only if in
+scope**; it tests whether the blue team detects/hunts persistence. Track every mechanism for clean removal.
 
 ## Logging discipline (non-negotiable here)
 Keep a **timestamped operator log** of every initial-access attempt, payload, C2 channel, and host touched.

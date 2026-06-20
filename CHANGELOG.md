@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `redteam` reporting reference (`03`) expanded with the scenario/scope (assumed-breach) section and a
   color-coded, legend-defined attack-diagram in the report structure.
 - Smoke test now expects 6 redteam reference files.
+- `pentest` exploitation reference (`04`) expanded: an exploitation-vectors taxonomy (public-facing app, valid/
+  default creds, exposed services, web, client-side/phishing) and a shells section (reverse vs bind, staged vs
+  stageless, listeners, PTY stabilization).
+- `redteam` C2 reference (`01`) expanded into a proper **C2 setup** treatment: team-server → listener/channel →
+  redirector → payload/stager → beacon architecture, beacon OPSEC (sleep/jitter, kill date, malleable profiles),
+  internal peer-to-peer (SMB named-pipe) C2 for no-egress hosts, and infrastructure hygiene — all detection-framed.
 - `pentest` recon reference (`01`, shared by both skills) substantially expanded: passive vs active framing
   (ATT&CK Reconnaissance TA0043), deeper DNS recon (dnsrecon/dnsdumpster/Netcraft/crt.sh), WAF/CDN detection
   (wafw00f), web-tech fingerprinting (whatweb/Wappalyzer/BuiltWith → version→CVE), subdomain enumeration
