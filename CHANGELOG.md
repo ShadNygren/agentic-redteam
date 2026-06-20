@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `redteam` reference `05-planning-scope-roe.md` — turning client objectives into scope, the full Rules-of-
   Engagement document anatomy, the four planning documents (engagement / operations / mission / remediation),
   threat-profile selection, the timestamped operator log, and planning/execution/culmination checklists.
+- `redteam` reference `06-threat-intel-and-apts.md` — understanding APTs (vs traditional actors), their
+  categories (FIN / state-sponsored / hacktivist / cybercrime / hybrid), vendor naming conventions (Mandiant
+  APT# / CrowdStrike animals-by-geography / Microsoft weather), attribution, and how to pick + model a real
+  actor for emulation. Smoke test now expects 7 redteam reference files.
 
 ### Changed
 - `redteam` reporting reference (`03`) expanded with the scenario/scope (assumed-breach) section and a

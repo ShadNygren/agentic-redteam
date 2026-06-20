@@ -70,7 +70,8 @@ system owner, and stakeholders**, and authorizes the work. It's a legal document
 Select the APT to emulate by **realism**: pick a group known to target the client's **geography *and* industry**
 (e.g. a financial-sector actor that targets North America for a North-American financial client) — not a random
 or geographically irrelevant group. State the TTPs you'll replicate; include the **ATT&CK Navigator layer**
-(`ref 04`) as the visual. See `ref 00` for the kill-chain/ATT&CK framing.
+(`ref 04`) as the visual. See `ref 06` for picking/modeling the actor (APT categories, naming, intel sources)
+and `ref 00` for the kill-chain/ATT&CK framing.
 
 ## 5. The operator log (accountability)
 Every operator keeps a **timestamped log of every action** — the backbone of deconfliction and the report
