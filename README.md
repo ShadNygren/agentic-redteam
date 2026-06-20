@@ -98,3 +98,7 @@ to identify the underlying software; no logos are used.
 ## License
 Code and documentation: **Apache License 2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE). The
 bundled Kali tools, Claude Code, and other third-party software remain under their own respective licenses.
+
+## Changelog
+Notable changes are tracked in [`CHANGELOG.md`](CHANGELOG.md) ([Keep a Changelog](https://keepachangelog.com) +
+[SemVer](https://semver.org)).
