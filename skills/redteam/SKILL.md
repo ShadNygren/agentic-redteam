@@ -19,6 +19,11 @@ and technology — and the deliverable is an **attack narrative + detection-gap 
 > **Sibling skill:** use `pentest` for broad, comprehensive vulnerability assessment. Use `redteam` for
 > objective-driven, stealthy adversary emulation where testing detection & response is the point.
 
+> **Strategic foundation (read it):** `${AGENTIC_REDTEAM_HOME}/docs/STRATEGY_OF_ADVERSARIAL_COEVOLUTION.md` — when
+> both sides know the playbook (ATT&CK + D3FEND), *knowledge is only the floor*. Victory is decided by **tempo,
+> terrain, deception, and adaptation velocity**, and authorized red/blue is **positive-sum sparring** to make the
+> organization win the real battles later. Understand the defender's strategy as well as your own.
+
 ## 🔴 Hard rules (identical to pentest — never violate)
 1. **No action without written authorization.** Confirm a signed authorization + scope at `/work/AUTHORIZATION.md`
    before ANY active step. Red-team RoE must additionally state: objectives, allowed initial-access vectors

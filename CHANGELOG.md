@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- **`docs/STRATEGY_OF_ADVERSARIAL_COEVOLUTION.md`** — a strategic-foundation paper (shared verbatim with the
+  blue-team companion): *when both sides know the playbook, knowledge is only the floor* — victory turns on
+  structural asymmetry, tempo (OODA), terrain, deception, force, discipline, and above all **adaptation velocity**
+  (the Red Queen / adversarial self-play engine — WarGames, AlphaZero, GANs). Red/blue is **positive-sum
+  sparring** (*iron sharpens iron*) and a **living document** that commits to continuously integrating emerging
+  TTPs. Wired into the redteam SKILL.md, README (Strategic foundation + Keeping current), and the smoke test.
 - `redteam` reference `05-planning-scope-roe.md` — turning client objectives into scope, the full Rules-of-
   Engagement document anatomy, the four planning documents (engagement / operations / mission / remediation),
   threat-profile selection, the timestamped operator log, and planning/execution/culmination checklists.

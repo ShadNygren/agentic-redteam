@@ -90,6 +90,21 @@ testing** — exercised within RoE and documented for the blue team, never cover
 
 See [`SECURITY.md`](SECURITY.md) and the skills under [`skills/`](skills).
 
+## Strategic foundation
+Both skills are grounded in a shared doctrine:
+[**The Strategy of Adversarial Co-Evolution**](docs/STRATEGY_OF_ADVERSARIAL_COEVOLUTION.md) (identical in the
+[Agentic Blueteam](https://github.com/ShadNygren/agentic-blueteam) companion). When both sides know the playbook
+(ATT&CK + D3FEND), *knowledge is only the floor* — victory is decided by **tempo, terrain, deception, and
+adaptation velocity**. Red vs. blue is **positive-sum sparring** (*iron sharpens iron*; "shall we play a game?")
+that makes the organization win the real battles, later, against the genuine adversary.
+
+## Keeping current (living project)
+New attacks are devised continuously, so defense must co-evolve. This project **continuously monitors
+cybersecurity developments and integrates emerging tactics** — ATT&CK/D3FEND updates, CISA/NSA advisories,
+community CTI, new research, and new attack surfaces (e.g. AI/LLM) — and evolves **in lockstep with the blue-team
+companion**: a new offensive technique on one side begets the matching detection on the other. See the doctrine's
+§12 and [`CHANGELOG.md`](CHANGELOG.md).
+
 ## Trademarks
 **Agentic Redteam™** is a trademark of Shad Nygren / Virtual Hipster Corporation.
 This project is **built on Kali Linux** and **driven by Claude Code** — it is **not affiliated with,
