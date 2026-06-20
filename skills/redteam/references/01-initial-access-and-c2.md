@@ -13,6 +13,9 @@ Emulate the actor's realistic entry vector — only those allowed by the RoE.
     white cell. Use a controlled phishing framework (e.g. **GoPhish**) and a benign tracking/payload approved in
     scope. A common APT pattern: the lure document is a **dropper/stager** — itself benign-looking, it calls
     back to C2 and pulls the next stage only after execution (tests email + execution + C2 detection).
+  - Build the recipient list and pretext from **recon/target development** (`../pentest/references/01` —
+    `theHarvester` emails/names, org-name OSINT); a **missing DMARC/DKIM** found in DNS recon makes domain
+    spoofing viable and is itself a finding.
   - What you're measuring: do email gateways/users report it? does the payload execution alert EDR? does the
     SOC respond? Log send time, recipients, and lure so the blue team can correlate.
 - **Exposed/external services (T1190, T1133)** — emulate exploitation of an internet-facing service or use of

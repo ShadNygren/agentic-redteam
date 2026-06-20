@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `redteam` reporting reference (`03`) expanded with the scenario/scope (assumed-breach) section and a
   color-coded, legend-defined attack-diagram in the report structure.
 - Smoke test now expects 6 redteam reference files.
+- `pentest` recon reference (`01`, shared by both skills) substantially expanded: passive vs active framing
+  (ATT&CK Reconnaissance TA0043), deeper DNS recon (dnsrecon/dnsdumpster/Netcraft/crt.sh), WAF/CDN detection
+  (wafw00f), web-tech fingerprinting (whatweb/Wappalyzer/BuiltWith → version→CVE), subdomain enumeration
+  (sublist3r/amass/fierce/knockpy + SecLists), search-engine dorking, automated frameworks (Amass/recon-ng/
+  Sniper), and an active vulnerability-scanning subsection (NSE/nikto/wpscan/cmsmap/searchsploit). The `redteam`
+  initial-access reference ties phishing target lists + spoofability back to recon outputs.
 
 ## [0.1.0] - 2026-06-20
 Initial public release: an AI-augmented offensive-security toolkit — Kali Linux + Claude Code + two Claude Code
