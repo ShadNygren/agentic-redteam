@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > requires modification notices when redistributing a *modified* upstream Apache work; this is an original work.
 
 ## [Unreleased]
+### Added
+- `redteam` reference `05-planning-scope-roe.md` — turning client objectives into scope, the full Rules-of-
+  Engagement document anatomy, the four planning documents (engagement / operations / mission / remediation),
+  threat-profile selection, the timestamped operator log, and planning/execution/culmination checklists.
+
+### Changed
+- `redteam` reporting reference (`03`) expanded with the scenario/scope (assumed-breach) section and a
+  color-coded, legend-defined attack-diagram in the report structure.
+- Smoke test now expects 6 redteam reference files.
 
 ## [0.1.0] - 2026-06-20
 Initial public release: an AI-augmented offensive-security toolkit — Kali Linux + Claude Code + two Claude Code

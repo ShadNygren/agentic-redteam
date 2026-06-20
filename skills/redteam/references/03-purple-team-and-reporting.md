@@ -38,15 +38,23 @@ The **ATT&CK Navigator** is the shared visual layer for both ends of the engagem
   red-team program.
 
 ## Report structure
-1. **Executive summary** — was the objective achieved? overall detection/response posture? top 3 things to fix.
-2. **Engagement overview** — objective(s), emulated threat actor, scope, RoE, dates, witting parties.
-3. **Attack narrative** — the kill chain as a timeline/story (initial access → C2 → privesc → lateral → objective),
-   each step tagged with its ATT&CK ID and the detection opportunity it created.
-4. **Detection-gap matrix + ATT&CK Navigator layer** — the analysis above.
-5. **Recommendations** — prioritized improvements to **detection & response** (new log sources, detections,
-   playbooks, training, segmentation), plus any **exploited vulnerabilities** handed off in standard finding
-   format (use `../pentest/references/05-reporting.md` for CVSS/reproduction/remediation per vuln).
-6. **Appendices** — full operator log (timestamps), evidence, cleanup confirmation.
+1. **Executive summary** — for the C-suite: goals, key observations, and which objectives were achieved. Was the
+   objective met? overall detection/response posture? top 3 things to fix.
+2. **Methodology & goals** — the detail behind the summary: methodology/nomenclature (ATT&CK), goals.
+3. **Scenario & scope** — state the engagement type (e.g. **assumed-breach model** — no initial access; start from
+   a provided foothold/jump box; or external-C2 + coordinated phishing with a trusted agent) and the scope.
+4. **Attack narrative + attack diagram** — the kill chain as a numbered/sequenced **flowchart** plus prose:
+   "initial access → C2 → credential harvesting → lateral movement → privesc → exfil," each step tagged with its
+   ATT&CK ID. **Color-code each step success/fail and STATE THE LEGEND** (the color convention is your choice —
+   just define it so an exec can read the diagram at a glance). Note the technique that worked at each pivot
+   (e.g. an SMB named-pipe C2 pivot) and what it yielded (e.g. cleartext creds for N domain accounts).
+5. **Description of each critical step** — standard pentest-style write-up of the key findings/vulns exploited
+   (PoC, reproduction, references) for the technical reader.
+6. **Detection-gap matrix + ATT&CK Navigator layer** — the analysis above.
+7. **Observations & recommendations** — prioritized improvements to **detection & response** (new log sources,
+   detections, playbooks, training, segmentation), plus any **exploited vulnerabilities** handed off in standard
+   finding format (use `../pentest/references/05-reporting.md` for CVSS/reproduction/remediation per vuln).
+8. **Appendices** — full **operator log** (timestamps — see `ref 05`), evidence, cleanup/rollback confirmation.
 
 ## Honesty, cadence & confidentiality
 - **Report what actually happened** — both the accesses you achieved (with benign proof) and every detection

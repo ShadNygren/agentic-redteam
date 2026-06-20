@@ -48,6 +48,8 @@ and technology — and the deliverable is an **attack narrative + detection-gap 
   report, and recommendations that improve detection & response.
 - `references/04-attack-navigator.md` — operationalize MITRE ATT&CK with the Navigator: map actor TTPs, plan/
   augment the emulation, score execution live, and export the detection heat-map for the blue team.
+- `references/05-planning-scope-roe.md` — turn client objectives into scope, the full Rules-of-Engagement
+  document anatomy, the four planning documents, the timestamped operator log, and planning/execution checklists.
 
 ## Shared execution references (reuse the pentest library — same tools, same guardrails)
 For the hands-on technical phases, read the pentest skill's library (installed alongside this skill):
@@ -59,9 +61,10 @@ The difference is **how** you use them here: minimal footprint, objective-focuse
 blue team sees.
 
 ## How to run a red-team engagement
-1. **Planning & threat model** (`ref 00` + `ref 04`) — read AUTHORIZATION + SCOPE; define the **objective(s)**
-   (the "flag"), pick the **threat actor to emulate** and map its TTPs in the ATT&CK Navigator, agree RoE +
-   deconfliction, confirm witting/unwitting staff. Get a "go."
+1. **Planning & threat model** (`ref 00` + `ref 05` + `ref 04`) — read AUTHORIZATION + SCOPE; extrapolate scope
+   from the client's objectives, define the **objective(s)** (the "flag"), pick the **threat actor to emulate**
+   (by geography + industry) and map its TTPs in the ATT&CK Navigator, agree the full RoE + deconfliction,
+   confirm witting/unwitting staff, and stand up the operator log. Get a "go."
 2. **Recon / target development** (`../pentest/ref 01`) — OSINT on people + tech; build pretexts and a target map.
 3. **Initial access** (`ref 01`) — emulate the actor's entry (phishing/payload/exposed service) **on approval**;
    log exactly what you sent and when, so the blue team can later correlate.

@@ -83,7 +83,8 @@ chains, ATT&CK, cadence),
 [initial access & C2](skills/redteam/references/01-initial-access-and-c2.md),
 [OPSEC & detection testing](skills/redteam/references/02-opsec-and-detection-testing.md),
 [purple team & reporting](skills/redteam/references/03-purple-team-and-reporting.md),
-[ATT&CK Navigator](skills/redteam/references/04-attack-navigator.md). All evasion is framed as **detection
+[ATT&CK Navigator](skills/redteam/references/04-attack-navigator.md),
+[planning, scope & RoE](skills/redteam/references/05-planning-scope-roe.md). All evasion is framed as **detection
 testing** — exercised within RoE and documented for the blue team, never covert intrusion.
 
 See [`SECURITY.md`](SECURITY.md) and the skills under [`skills/`](skills).
