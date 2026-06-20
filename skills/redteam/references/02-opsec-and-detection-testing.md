@@ -15,6 +15,22 @@ Examples to test (emulate the *actor's* known TTPs, in scope): masquerading, dis
 security tools, living-off-the-land binaries (LOLBins), credential dumping detection, lateral-movement
 detection, and exfil-channel detection. The value is the **answer**, not the bypass.
 
+## Measure *response*, not just detection — and provoke it on purpose when needed
+Detection is half the question; the other half is **did the blue team respond, and how fast?** Track the
+defender's **MTTD** (mean time to detect) and **MTTR** (mean time to respond) for the techniques you ran — those
+are the headline numbers the engagement exists to move, and they double as a read on the org's **IR maturity**
+(do they have playbooks? do they actually action alerts? does the right exec get woken at 2 a.m. *only* when
+warranted?).
+- **If you sit undetected for a long time, surface presence deliberately to test response.** A real adversary
+  stays silent; a *red team* whose goal is to test detection/response can — within RoE and deconfliction —
+  trigger a **benign, non-destructive marker** (e.g. a harmless popup / a planted benign artifact) to see
+  whether and how fast the SOC notices and responds. The giveaway that it's the red team, not a real attacker,
+  is exactly that it's harmless (no data destroyed, no ransom) — which is why the white cell and operator log
+  matter for deconfliction.
+- **Assess IR maturity as a finding.** Whether the client even *has* documented IR playbooks, and whether they
+  hold up under a real attack, is itself a deliverable — "trust but verify": don't take "we have a process" at
+  face value; the engagement tests it.
+
 ## OPSEC levels — calibrate to the engagement
 - **Loud (overt / purple-team):** act openly so the blue team can build/tune detections against known activity.
 - **Realistic (typical red team):** behave like the emulated actor — reasonable stealth, normal-looking traffic,

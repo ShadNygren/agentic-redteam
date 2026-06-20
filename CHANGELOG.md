@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   actor for emulation. Smoke test now expects 7 redteam reference files.
 
 ### Changed
+- `redteam` OPSEC/detection-testing reference (`02`) expanded (from IR-practitioner podcasts): measure the blue
+  team's **response** (MTTD/MTTR) and IR maturity, not just detection; and — within RoE/deconfliction —
+  deliberately surface a benign, non-destructive marker to test whether/how fast the SOC responds when you've sat
+  undetected. Assessing IR-playbook maturity is itself a deliverable ("trust but verify").
 - `redteam` reporting reference (`03`) expanded with the scenario/scope (assumed-breach) section and a
   color-coded, legend-defined attack-diagram in the report structure.
 - Smoke test now expects 6 redteam reference files.
