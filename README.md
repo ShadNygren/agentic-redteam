@@ -1,0 +1,72 @@
+# Agentic Redteam™
+
+*AI-augmented penetration testing — built on Kali Linux, driven by Claude Code.*
+
+**Copyright © 2026 Shad Nygren / Virtual Hipster Corporation · Apache-2.0 License**
+
+> ⚠️ **Authorized testing only.** This is offensive-security tooling. Use it solely against systems you
+> own or have **explicit written permission** to test. See [`SECURITY.md`](SECURITY.md).
+
+---
+
+## What this is
+A Docker image that packages **Kali Linux + Claude Code + a penetration-testing Claude Code Skill** into a
+single, runnable, AI-augmented red-team toolkit. Claude Code orchestrates the Kali toolset by following a
+recognized methodology — **PTES / NIST SP 800-115 / OWASP / MITRE ATT&CK** — wrapped in a **deterministic
+harness with human-in-the-loop control** so every finding is **tool-evidenced and reproducible, not
+hallucinated** (the documented failure mode of AI pentesters), and written up as an **auditor-acceptable
+report**.
+
+Because it ships as a **Docker image you run where the test needs to happen**, it covers **both**:
+- **External** assessments (run it anywhere with reach to the target), and
+- **Internal** assessments — deploy the container **inside the network** to answer "a guest joins our
+  WiFi, what can they reach?" (a hosted web service can't do this; a container on the LAN can).
+
+The full methodology is in [`docs/PENETRATION_TESTING_WITH_KALI_LINUX_AND_CLAUDE_CODE.md`](docs/PENETRATION_TESTING_WITH_KALI_LINUX_AND_CLAUDE_CODE.md).
+
+## Quick start
+```bash
+# Build (default: kali-last-release base + kali-linux-headless CLI toolset)
+docker build -t agentic-redteam .
+
+# Run: mount a workspace (authorization/scope IN, report OUT), provide your Claude key.
+# --network host (or a bridged target VLAN) is needed for INTERNAL testing.
+docker run -it --rm \
+  -e ANTHROPIC_API_KEY=sk-ant-... \
+  -v "$(pwd)/work:/work" \
+  --network host \
+  agentic-redteam
+
+# Inside the container:
+#   1) put your signed scope at /work/AUTHORIZATION.md and targets (one per line) at /work/SCOPE.txt
+#   2) run:  claude        # the `pentest` skill is preloaded and enforces the guardrails
+```
+
+### Build options
+| Build arg | Default | Alternatives |
+|---|---|---|
+| `KALI_TAG` | `kali-last-release` (stable, reproducible) | `kali-rolling` (weekly, latest tools) |
+| `TOOLSET` | `kali-linux-headless` (full CLI suite) | `kali-tools-top10` (lean), `kali-linux-large` (full desktop suite) |
+
+```bash
+docker build --build-arg KALI_TAG=kali-rolling --build-arg TOOLSET=kali-tools-top10 -t agentic-redteam:lean .
+```
+
+## Safety model (why this is trustworthy)
+- **No action without written authorization + in-scope confirmation** (`scripts/scope_check.sh`).
+- **Human-in-the-loop gate** before any exploitation / password attack / post-exploitation.
+- **Tool-evidenced findings only** — no fabricated output, every finding reproducible.
+- **Egress-controlled**; for regulated data you can swap Claude for a **local model** so nothing leaves.
+
+See [`SECURITY.md`](SECURITY.md) and the skill at [`skills/pentest/SKILL.md`](skills/pentest/SKILL.md).
+
+## Trademarks
+**Agentic Redteam™** is a trademark of Shad Nygren / Virtual Hipster Corporation.
+This project is **built on Kali Linux** and **driven by Claude Code** — it is **not affiliated with,
+sponsored by, or endorsed by OffSec or Anthropic**. **Kali** and **Kali Linux** are trademarks of OffSec;
+**Claude** and **Claude Code** are trademarks of Anthropic. All product names are used **descriptively**
+to identify the underlying software; no logos are used.
+
+## License
+Code and documentation: **Apache License 2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE). The
+bundled Kali tools, Claude Code, and other third-party software remain under their own respective licenses.
