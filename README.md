@@ -4,6 +4,12 @@
 
 **Copyright © 2026 Shad Nygren / Virtual Hipster Corporation · Apache-2.0 License**
 
+[![Docker Build](https://github.com/ShadNygren/agentic-redteam/actions/workflows/docker-build.yml/badge.svg)](https://github.com/ShadNygren/agentic-redteam/actions/workflows/docker-build.yml)
+[![Security Scan](https://github.com/ShadNygren/agentic-redteam/actions/workflows/security.yml/badge.svg)](https://github.com/ShadNygren/agentic-redteam/actions/workflows/security.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/ShadNygren/agentic-redteam/badge)](https://scorecard.dev/viewer/?uri=github.com/ShadNygren/agentic-redteam)
+[![SBOM](https://img.shields.io/badge/SBOM-CycloneDX%20%2B%20SPDX-blue)](https://github.com/ShadNygren/agentic-redteam/actions/workflows/security.yml)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 > ⚠️ **Authorized testing only.** This is offensive-security tooling. Use it solely against systems you
 > own or have **explicit written permission** to test. See [`SECURITY.md`](SECURITY.md).
 

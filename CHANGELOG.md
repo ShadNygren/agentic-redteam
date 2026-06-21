@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- **README badges + supply-chain security:** Docker Build, Security Scan, OpenSSF Scorecard, SBOM, and License
+  badges. New `security.yml` workflow generates an **SBOM** (CycloneDX + SPDX, via Syft) and runs a **vulnerability
+  scan** (Grype, SARIF -> Security tab); new `scorecard.yml` runs the OpenSSF Scorecard. **Trivy is deliberately
+  avoided** (the `aquasecurity/trivy-action`/`setup-trivy` TeamPCP supply-chain compromise, March 2026) in favor of
+  the uncompromised Syft/Grype (Anchore). Added a `.gitignore` (and removed accidentally-committed `__pycache__/*.pyc`).
 - **Strategy doctrine §10.1 "The companion is not a free pass."** The positive-sum framing is the *intent* of an
   authorized exercise, not a trust loophole: the offensive tooling is public/dual-use, a real adversary will
   mimic the pentest to hide, so authorized activity is **positively deconflicted, never assumed** (white cell /
