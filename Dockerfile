@@ -49,9 +49,11 @@ RUN npm install -g @anthropic-ai/claude-code \
 COPY skills/ /root/.claude/skills/
 RUN mkdir -p ${AGENTIC_REDTEAM_HOME}
 COPY docs/   ${AGENTIC_REDTEAM_HOME}/docs/
+COPY tools/  ${AGENTIC_REDTEAM_HOME}/tools/
 COPY tests/  ${AGENTIC_REDTEAM_HOME}/tests/
 COPY README.md SECURITY.md NOTICE LICENSE ${AGENTIC_REDTEAM_HOME}/
-RUN chmod +x ${AGENTIC_REDTEAM_HOME}/tests/*.sh /root/.claude/skills/*/scripts/*.sh 2>/dev/null || true
+RUN chmod +x ${AGENTIC_REDTEAM_HOME}/tests/*.sh /root/.claude/skills/*/scripts/*.sh \
+      ${AGENTIC_REDTEAM_HOME}/tools/bayesian/*.py 2>/dev/null || true
 
 # 5) Engagement workspace — mount a volume here: authorization/scope files IN, report OUT.
 WORKDIR /work

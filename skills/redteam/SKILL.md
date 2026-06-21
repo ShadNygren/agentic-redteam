@@ -24,6 +24,12 @@ and technology — and the deliverable is an **attack narrative + detection-gap 
 > terrain, deception, and adaptation velocity**, and authorized red/blue is **positive-sum sparring** to make the
 > organization win the real battles later. Understand the defender's strategy as well as your own.
 
+> **Reason under uncertainty (read it):** `${AGENTIC_REDTEAM_HOME}/docs/BAYESIAN_REASONING_UNDER_UNCERTAINTY.md` —
+> form/update hypotheses Bayesianly using **qualitative bands** (Very Low … Very High), **never invented numbers**.
+> Mind base rates (a noisy tool on a rare vuln is still probably a false alarm) and chain conditional probabilities
+> (a path is only as strong as its weakest link; one mitigation collapses it). For exact figures, call the
+> deterministic engines in `${AGENTIC_REDTEAM_HOME}/tools/bayesian/`.
+
 ## 🔴 Hard rules (identical to pentest — never violate)
 1. **No action without written authorization.** Confirm a signed authorization + scope at `/work/AUTHORIZATION.md`
    before ANY active step. Red-team RoE must additionally state: objectives, allowed initial-access vectors

@@ -7,6 +7,10 @@
 > ⚠️ **Authorized testing only.** This is offensive-security tooling. Use it solely against systems you
 > own or have **explicit written permission** to test. See [`SECURITY.md`](SECURITY.md).
 
+> ⚔️ **Offensive companion to [Agentic Blueteam](https://github.com/ShadNygren/agentic-blueteam).** Where Agentic
+> Blueteam detects and responds to adversaries, Agentic Redteam **emulates** them — and feeds its ATT&CK-mapped
+> emulations to the blue side to validate detections and surface gaps (the red/blue loop).
+
 ---
 
 ## What this is
@@ -98,6 +102,16 @@ Both skills are grounded in a shared doctrine:
 (ATT&CK + D3FEND), *knowledge is only the floor* — victory is decided by **tempo, terrain, deception, and
 adaptation velocity**. Red vs. blue is **positive-sum sparring** (*iron sharpens iron*; "shall we play a game?")
 that makes the organization win the real battles, later, against the genuine adversary.
+
+## Probabilistic reasoning (Bayesian)
+Much of red/blue work is forming and updating hypotheses under uncertainty. This project applies **Bayesian
+reasoning** with a hard rule for LLM reliability: **reason in qualitative bands — Very Low / Low / Medium / High /
+Very High — never invented numbers.** Mind base rates (a noisy tool on a rare vuln is still probably a false
+alarm), and treat an exploit chain as a product of conditional steps (only as strong as its weakest link; one
+mitigation collapses it — *where am I truly vulnerable vs. effectively mitigated?*). When an **exact** figure is
+needed, the agent calls the deterministic engines in [`tools/bayesian/`](tools/bayesian) (vulnerability calculator,
+exploit-chain simulator) — the neuro-symbolic / deterministic-harness pattern. Doctrine:
+[`docs/BAYESIAN_REASONING_UNDER_UNCERTAINTY.md`](docs/BAYESIAN_REASONING_UNDER_UNCERTAINTY.md).
 
 ## Keeping current (living project)
 New attacks are devised continuously, so defense must co-evolve. This project **continuously monitors

@@ -39,6 +39,13 @@ check "redteam reference library complete (8 files)" test "$(ls -1 "$RT_REF"/*.m
 # shared strategic-foundation doctrine
 check "strategy doctrine doc present" test -f /opt/agentic-redteam/docs/STRATEGY_OF_ADVERSARIAL_COEVOLUTION.md
 
+echo "[bayesian reasoning tools]"
+BAY=/opt/agentic-redteam/tools/bayesian
+check "bayesian doctrine doc present" test -f /opt/agentic-redteam/docs/BAYESIAN_REASONING_UNDER_UNCERTAINTY.md
+check "vulnerability_calculator runs"  python3 "$BAY/vulnerability_calculator.py"
+check "exploit_chain_simulator runs"   python3 "$BAY/exploit_chain_simulator.py"
+check "prob_to_band maps Very High"    bash -c "cd '$BAY' && python3 -c 'from bands import prob_to_band; assert prob_to_band(0.95)==\"Very High\" and prob_to_band(0.05)==\"Very Low\"'"
+
 echo "[scope guard]"
 # both skills carry the scope guard; it must REFUSE when no scope file exists (exit != 0)
 for SG in /root/.claude/skills/pentest/scripts/scope_check.sh /root/.claude/skills/redteam/scripts/scope_check.sh; do

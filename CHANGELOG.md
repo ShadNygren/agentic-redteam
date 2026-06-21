@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- **Bayesian reasoning under uncertainty.** New `docs/BAYESIAN_REASONING_UNDER_UNCERTAINTY.md` (shared verbatim
+  with the blue companion): reason in **qualitative bands** (Very Low … Very High), **never LLM-invented numbers**;
+  mind **base rates** (a noisy tool on a rare vuln is still probably a false alarm); chain conditional probabilities
+  (a path is only as strong as its weakest link; one mitigation collapses it); don't double-count correlated
+  evidence. New deterministic engines in `tools/bayesian/` (`bands.py`, `vulnerability_calculator.py`,
+  `exploit_chain_simulator.py`) — pure-stdlib, each returns the number **and** its band; the agent calls them when
+  an exact figure is needed (neuro-symbolic / deterministic-harness). Wired into the redteam SKILL.md, `pentest/01`
+  (base-rate scanner confidence) and `pentest/04` (exploit-chain probability), README, Dockerfile, and smoke test
+  (engines run + bands map correctly).
 - **`redteam` reference `07-adversary-emulation-plan.md`** — the end-to-end emulation workflow: **emulation vs
   simulation** (faithful 1:1 to one actor vs augmented/combined TTP set), why clients want it (tests *Defenders*
   not just defenses — detection/response/escalation), the cyclic emulation lifecycle, and the plan steps (select
