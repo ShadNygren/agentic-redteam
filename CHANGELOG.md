@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- **Strategy doctrine §10.1 "The companion is not a free pass."** The positive-sum framing is the *intent* of an
+  authorized exercise, not a trust loophole: the offensive tooling is public/dual-use, a real adversary will
+  mimic the pentest to hide, so authorized activity is **positively deconflicted, never assumed** (white cell /
+  signed authorization / operator-log match) — and red is indistinguishable from a real attacker by design, which
+  is exactly why deconfliction discipline exists. Shared verbatim with the blue companion.
 - **Bayesian reasoning under uncertainty.** New `docs/BAYESIAN_REASONING_UNDER_UNCERTAINTY.md` (shared verbatim
   with the blue companion): reason in **qualitative bands** (Very Low … Very High), **never LLM-invented numbers**;
   mind **base rates** (a noisy tool on a rare vuln is still probably a false alarm); chain conditional probabilities
